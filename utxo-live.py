@@ -107,15 +107,13 @@ def parse_script(data_b, data_size, first_byte):
 
 # read the utxo dump file header
 def read_fileheader(fin):
-    #get binary base block_hash, coin count, and ? from header info
+    #get binary base block_hash, coin count
     bbhash_b = fin.read(32)
     ccount_b = fin.read(8)
-    txcount_b = fin.read(4)
 
     #decode binary bbhash, ccount
     bbhash = decode_hex256(bbhash_b)
-    ccount = struct.unpack('Q', ccount_b)[0]
-    txcount = struct.unpack('I', txcount_b)[0]
+    ccount = struct.unpack('Q', ccount_b)[0]    
 
     return ccount
 
